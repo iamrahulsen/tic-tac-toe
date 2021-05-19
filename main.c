@@ -19,10 +19,16 @@ void show_grid()
     printf("\t\t\t\t\t\t\t\t\t    -----|-----|-----\n");
 
 }
+void start_game()
+{
+    printf("\n\t\t\t\t\t\t\t Player1 Symbol: X");
+    printf("\n\t\t\t\t\t\t\t Player2 Symbol: O");
+}
 int main()
 {
     game_name("Tic Tac Toe");
     show_grid();
+    start_game();
 
 
     return 0;
