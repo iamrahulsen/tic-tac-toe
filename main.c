@@ -42,7 +42,18 @@ void start()
 
     printf("\n\t\t\t\t\t\t\t Player 2 enter you name: ");
     gets(p2_name);
-    printf("\t\t\t\t\t\t\t **Best of luck %s, Your symbol is X \n", p2_name);
+    printf("\t\t\t\t\t\t\t **Best of luck %s, Your symbol is O \n", p2_name);
+    printf("\t\t\t\t\t\t\t\t\t      Loading.");
+    sleep(1);
+    printf(".");
+    sleep(1);
+    printf(".");
+    sleep(1);
+    printf(".");
+    sleep(1);
+    printf(".");
+    sleep(1);
+    printf(".");
     sleep(2);
     system("cls");
     game_name("Tic Tac Toe");
@@ -165,9 +176,9 @@ int main()
     }
     if(res == 0)
     {
-        printf("Oh! tough fight, it's a DRAW....\n");
+        printf("\t\t\t\t\t\t\tCOh! tough fight, it's a DRAW....\n");
     }
-    printf("Do you want to play again? (y/n)");
+    printf("\n\t\t\t\t\t\t\tDo you want to play again? (y/n)");
     char ch;
     scanf(" %c,",&ch);
     if(ch == 'y' || ch == 'Y')
@@ -187,10 +198,12 @@ int main()
     }
     else
     {
-        printf("Thanks for playing! See you again.");
+        system("cls");
+        game_name("Tic Tac Toe");
+        printf("\n\n\t\t\t\t\t\t\t\t    Thanks for playing! See you again.");
     }
     
-    getch();
+    sleep(2);
 
     return 0;
 }
