@@ -4,19 +4,21 @@
 #include <stdlib.h>
 
 char arr[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'}; // arr for the game grid
-char p1_name[100], p2_name[100];                             // player's name
+char p1_name[100], p2_name[100];  // player's name
 int end = 1;
 int res =0;
 int k = 0;
+
+// displays the game name
 void game_name(char *g_name)
 {
     printf("\n\t\t\t\t\t\t\t\t\t");
     printf("**Let's Play %s**\n\n", g_name); // displays the game name at the top
 }
 
-void show_grid()
+// draws the grid of the tic tac toe game
+void show_grid() 
 {
-    // draws the grid for playing the game with position number
     printf("\n\n\t\t\t\t\t\t\t\t\t      %c  |  %c  |  %c \n", arr[0], arr[1], arr[2]);
     printf("\t\t\t\t\t\t\t\t\t    -----|-----|-----\n");
     printf("\t\t\t\t\t\t\t\t\t      %c  |  %c  |  %c \n", arr[3], arr[4], arr[5]);
@@ -24,11 +26,14 @@ void show_grid()
     printf("\t\t\t\t\t\t\t\t\t      %c  |  %c  |  %c \n", arr[6], arr[7], arr[8]);
 }
 
+// displays the game sysmbols
 void game_symbols()
 {
     printf("\n\t\t\t\t\t\t\t Player1 Symbol: X");
     printf("\n\t\t\t\t\t\t\t Player2 Symbol: O");
 }
+
+// displays the symbol assignmed to each of the players
 void symbol()
 {
     printf("\n\t\t\t\t\t\t\t%s, Your symbol is X \n ", p1_name);
@@ -36,6 +41,7 @@ void symbol()
 
 }
 
+// takes the name of the players
 void start()
 {
     fflush(stdin);
@@ -63,6 +69,7 @@ void start()
     symbol();
 }
 
+// takes input from the players
 void play()
 {
     char position;
@@ -96,6 +103,7 @@ void play()
     }
 }
 
+// checking for who won the game
 int who_won()
 {
     if(arr[0] == 'X' && arr[1] == 'X' && arr[2] == 'X')
@@ -136,6 +144,7 @@ int who_won()
 
 }
 
+// declares the result
 void result()
 {
     res = who_won();
@@ -177,7 +186,7 @@ void result()
     
 }
 
-
+// driver function 
 int main()
 {
     again:
