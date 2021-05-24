@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <conio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 char arr[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'}; // arr for the game grid
 char p1_name[100], p2_name[100];                             // player's name
 int end = 1;
 int res =0;
+int k = 0;
 void game_name(char *g_name)
 {
     printf("\n\t\t\t\t\t\t\t\t\t");
@@ -36,6 +38,7 @@ void symbol()
 
 void start()
 {
+    fflush(stdin);
     printf("\n\n\t\t\t\t\t\t\t So, Who is going the start the game? Player 1 enter you name: ");
     gets(p1_name);
     printf("\t\t\t\t\t\t\t **Best of luck %s, Your symbol is X \n", p1_name);
@@ -43,7 +46,7 @@ void start()
     printf("\n\t\t\t\t\t\t\t Player 2 enter you name: ");
     gets(p2_name);
     printf("\t\t\t\t\t\t\t **Best of luck %s, Your symbol is O \n", p2_name);
-    printf("\t\t\t\t\t\t\t\t\t      Loading.");
+    printf("\n\t\t\t\t\t\t\t\t\t      Loading.");
     sleep(1);
     printf(".");
     sleep(1);
@@ -63,7 +66,6 @@ void start()
 void play()
 {
     char position;
-    static int k = 0;
     if (k == 0)
     {
         printf("\n\t\t\t\t\t\t\t Enter your postion, %s: ", p1_name);
@@ -136,7 +138,6 @@ int who_won()
 
 void result()
 {
-    int draw = 0;
     res = who_won();
     if(res == 1)
     {
@@ -153,6 +154,27 @@ void result()
         printf("\n\t\t\t\t\t\t\tCongrats %s!, you won the game.",p2_name);
         end = 0;
     }
+    if(res == 3)
+    {
+        if((arr[0] == 'X' || arr[0] == 'O') 
+        && (arr[1] == 'X' || arr[1] == 'O') 
+        && (arr[2] == 'X' || arr[2] == 'O') 
+        && (arr[3] == 'X' || arr[3] == 'O') 
+        && (arr[4] == 'X' || arr[4] == 'O') 
+        && (arr[5] == 'X' || arr[5] == 'O') 
+        && (arr[6] == 'X' || arr[6] == 'O') 
+        && (arr[7] == 'X' || arr[7] == 'O') 
+        && (arr[8] == 'X' || arr[8] == 'O'))
+        {
+            system("cls");
+            game_name("Tic Tac Toe");
+            show_grid();
+            printf("\n\t\t\t\t\t\t\tOh! tough fight, it's a DRAW....\n");
+            end = 0;
+        }
+        
+    }
+    
 }
 
 
@@ -174,10 +196,6 @@ int main()
         play();
         result();
     }
-    if(res == 0)
-    {
-        printf("\t\t\t\t\t\t\tCOh! tough fight, it's a DRAW....\n");
-    }
     printf("\n\t\t\t\t\t\t\tDo you want to play again? (y/n)");
     char ch;
     scanf(" %c,",&ch);
@@ -194,6 +212,7 @@ int main()
         arr[8] = '9';
         end = 1;
         res = 0;
+        k = 0;
         goto again;
     }
     else
